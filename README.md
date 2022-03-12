@@ -1,6 +1,8 @@
 # della-compiler
 Compiler using ANTLR + LLVM
 
+*Note: This repo is just to education goals*
+
 # Dev
 
 ## .vscode folder
