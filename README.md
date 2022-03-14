@@ -1,13 +1,2 @@
-# della-compiler
-Compiler using ANTLR + LLVM
-
-# Dev
-
-## .vscode folder
-
-launch.json
-```json
-{
-
-}
-```
+# Della Compiler
+ Della Compiler - C#
