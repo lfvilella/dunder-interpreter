@@ -2,7 +2,7 @@ import antlr4
 from antlr4.error.ErrorListener import ErrorListener
 import click
 
-from .antlr.CLexer import CLexer
+from .antlr.CVisitor import CVisitor
 from .antlr.CParser import CParser
 
 
@@ -12,6 +12,10 @@ class MyErrorListener(ErrorListener):
             pass
         else:
             raise SyntaxError(f"line {line}:{column} {msg}")
+
+
+class Visitor(CVisitor):
+    pass
 
 
 def run(filepath: str):

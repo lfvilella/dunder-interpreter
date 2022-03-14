@@ -13,7 +13,7 @@ $ | cmd
 
 Run **alias** commands commented on `java/Dockerfile`. We're working on to solve.
 
-    # antlr4 Hello.g4 -o antlr -listener -visitor
+    # antlr4 Hello.g4 -o antlr -listener -visitor -Dlanguage=Python3
 
 *Note: If you get this error: `error(7):  cannot find or open file:`. Try to run a couple of times, should work, we're working on to fix it.*
 
