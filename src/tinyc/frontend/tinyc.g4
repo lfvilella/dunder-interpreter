@@ -59,9 +59,10 @@ statement
    : 'if' paren_expr statement
    | 'if' paren_expr statement 'else' statement
    | 'while' paren_expr statement
-   | 'do' statement 'while' paren_expr ';'
+   | 'do' statement 'while' paren_expr ';'  /* TODO: remove it */
    | '{' statement* '}'
    | expr ';'
+   | 'printf' paren_expr ';'
    | ';'
    ;
 

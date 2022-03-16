@@ -1,4 +1,4 @@
-# Generated from tinyc.g4 by ANTLR 4.8
+# Generated from /Users/felipe/projects/della-compiler/src/tinyc/frontend/tinyc.g4 by ANTLR 4.8
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .tinycParser import tinycParser
@@ -36,7 +36,6 @@ class tinycVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by tinycParser#sum_.
     def visitSum_(self, ctx:tinycParser.Sum_Context):
-        breakpoint()
         return self.visitChildren(ctx)
 
 
