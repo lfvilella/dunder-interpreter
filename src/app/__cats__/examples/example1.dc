@@ -1,0 +1,11 @@
+function sum(a) {
+    return a + 1;
+}
+
+printf('a')
+> __lion__: 'a'
+
+
+while 1:
+    __b__ = __sum__(1, 2)
+    printf('__b__')
