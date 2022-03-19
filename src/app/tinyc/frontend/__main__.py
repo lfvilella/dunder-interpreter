@@ -3,7 +3,7 @@ import click
 
 from .antlr.tinycLexer import tinycLexer
 from .antlr.tinycParser import tinycParser
-from .visitor import CustomTinycVisitor
+from backend.visitor import CustomTinycVisitor
 
 
 def run(filepath: str):

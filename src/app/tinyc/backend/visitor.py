@@ -1,7 +1,11 @@
 import re
+import logging
 
-from .antlr.tinycParser import tinycParser
-from .antlr.tinycVisitor import tinycVisitor
+from frontend.antlr.tinycParser import tinycParser
+from frontend.antlr.tinycVisitor import tinycVisitor
+
+
+logger = logging.getLogger(__name__)
 
 
 TABLE = {}
@@ -14,7 +18,7 @@ class CustomTinycVisitor(tinycVisitor):
 
     # Visit a parse tree produced by tinycParser#statement.
     def visitStatement(self, ctx:tinycParser.StatementContext):
-        # print('visitStatement')
+        logging.debug('visitStatement')
         start_text = ctx.start.text
         if start_text == 'if':
             paren_expr = self.visit(ctx.paren_expr().expr())
@@ -44,12 +48,12 @@ class CustomTinycVisitor(tinycVisitor):
 
     # Visit a parse tree produced by tinycParser#paren_expr.
     def visitParen_expr(self, ctx:tinycParser.Paren_exprContext):
-        # print('visitParen_expr')
+        logging.debug('visitParen_expr')
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by tinycParser#expr.
     def visitExpr(self, ctx:tinycParser.ExprContext):
-        # print('visitExpr')
+        logging.debug('visitExpr')
         if '=' in ctx.getText():
             id = self.visit(ctx.id_())
             expr = self.visit(ctx.expr())
@@ -60,7 +64,7 @@ class CustomTinycVisitor(tinycVisitor):
 
     # Visit a parse tree produced by tinycParser#test.
     def visitTest(self, ctx:tinycParser.TestContext):
-        # print('visitTest')
+        logging.debug('visitTest')
         ctx_text = ctx.getText()
         # is_conditional = re.search('[<|>]', ctx_text)
         if '<' not in ctx_text:
@@ -75,7 +79,7 @@ class CustomTinycVisitor(tinycVisitor):
 
     # Visit a parse tree produced by tinycParser#sum_.
     def visitSum_(self, ctx:tinycParser.Sum_Context):
-        # print('visitSum_')
+        logging.debug('visitSum_')
         ctx_text = ctx.getText()
         is_math_expr = re.search('[+|-]', ctx_text)
         if not is_math_expr:

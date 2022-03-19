@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# TODO:
-# - create args parse
-# - think if we should delete IR (.ll)
-
 filepath=$1
 ll_replace=".ll"
 bin_replace=".out"

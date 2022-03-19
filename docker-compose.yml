@@ -21,7 +21,8 @@ services:
   #   command: /bin/bash
 
   clang:
-    build: clang
+    build:
+      context: .
     volumes:
       - ./:/app
     working_dir: /app

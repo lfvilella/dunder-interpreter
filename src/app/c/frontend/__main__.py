@@ -1,3 +1,5 @@
+import logging
+
 import antlr4
 from antlr4.error.ErrorListener import ErrorListener
 import click
@@ -6,12 +8,15 @@ from .antlr.CLexer import CLexer
 from .antlr.CParser import CParser
 
 
+logger = logging.getLogger(__name__)
+
+
 class MyErrorListener(ErrorListener):
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        if offendingSymbol.text in ['int']:  # Xunxo
-            pass
-        else:
+        if offendingSymbol.text not in ['int']:  # Xunxo
             raise SyntaxError(f"line {line}:{column} {msg}")
+
+        logger.info(f"Syntax Error skip: '{offendingSymbol.text}'. {e}")
 
 
 def run(filepath: str):
@@ -23,13 +28,7 @@ def run(filepath: str):
     parser.removeErrorListeners()
     parser.addErrorListener(listener=MyErrorListener())
 
-    tree = parser.primaryExpression()
-
-    # breakpoint()
-    # print('tree.exception', tree.exception)
-    # printer = MyGrammarListener()
-    # walker = ParseTreeWalker()
-    # walker.walk(printer, tree)
+    parser.primaryExpression()  # tree
 
 
 @click.command()
