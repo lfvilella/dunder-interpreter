@@ -1,9 +1,13 @@
-# della-compiler
-Compiler using ANTLR + LLVM
+# dunder interpreter
 
 *Note: This repo is just to education goals*
 
-# Dev
+Implemented:
+- C compiler using ANTLR + Clang + LLVM
+- tinyC interpreter using ANTLR + Python
+
+Wip:
+- dunder cats language interpreted with Python
 
 ## .vscode folder
 
