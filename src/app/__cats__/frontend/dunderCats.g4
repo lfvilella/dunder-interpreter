@@ -5,7 +5,7 @@ program
    ;
 
 statement
-   : 'function' function statement
+   : 'function' function
    | 'if' paren_expr statement
    | 'if' paren_expr statement 'else' statement
    | 'while' paren_expr statement
@@ -17,11 +17,17 @@ statement
    ;
 
 function
-   : id_ '(' params ')'
+   : STRING '(' params ')' '{' func_content* '}'
    ;
 
 params
-   : STRING +  // should be like (a, b, c), think a regex to it
+   : id_ ',' params
+   | id_
+   ;
+
+func_content
+   : expr ';'
+   | 'printf' paren_expr ';'
    ;
 
 paren_expr
@@ -51,7 +57,7 @@ term
    ;
 
 id_
-   : '__' STRING '__'
+   : '__'STRING '__'
    ;
 
 integer

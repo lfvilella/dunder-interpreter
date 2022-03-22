@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 TABLE = {}
+FUNCTIONS = {}
 
 
 class CustomTinycVisitor(dunderCatsVisitor):
@@ -47,6 +48,24 @@ class CustomTinycVisitor(dunderCatsVisitor):
             expr = TABLE.get(expr) or expr
             print(f"⚡⚡{random.choice(THUNDER_REFS)}⚡⚡:", expr)
 
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by dunderCatsParser#function.
+    def visitFunction(self, ctx:dunderCatsParser.FunctionContext):
+        # ctx_text = ctx.getText()
+        params = self.visit(ctx.params())
+        start_text = ctx.start.text
+        FUNCTIONS[start_text] = \
+            f"""def {start_text}({params}):
+                print(a)
+            """
+        return self.visitChildren(ctx)
+
+    def visitParams(self, ctx:dunderCatsParser.ParamsContext):
+        return ctx.getText()
+
+    # Visit a parse tree produced by dunderCatsParser#func_content.
+    def visitFunc_content(self, ctx:dunderCatsParser.Func_contentContext):
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by dunderCatsParser#paren_expr.

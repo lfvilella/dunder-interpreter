@@ -1,11 +1,9 @@
-function sum(a) {
-    return a + 1;
+function mysum(__a__, __b__) {
+    __c__ = __a__ + __b__;
+    printf(__c__);
 }
 
-printf('a')
-> __lion__: 'a'
-
-
-while 1:
-    __b__ = __sum__(1, 2)
-    printf('__b__')
+while (1) {
+    __b__ = 1;
+    printf(__b__);
+}
